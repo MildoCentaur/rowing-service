@@ -1,0 +1,13 @@
+---
+spring:
+  profiles:
+    active: default
+  cloud:
+    config:
+      uri: http://localhost:8088
+      username: ${username}
+      password: ${password}
+    refresh:
+      enabled: true
+encrypt:
+  key: ${key}
