@@ -19,12 +19,24 @@ public class HealthCheckController {
   @Value("${post.attributes}")
   String posts;
 
-  @GetMapping("health-check/mildo")
+  @Value("${spring.rabbitmq.username}")
+  String rabbitUserName;
+
+  @Value("${spring.rabbitmq.password}")
+  String rabbitPassword;
+
+
+  @GetMapping("health-check/properties")
   List<String> configurations() {
     final List<String> collect = Stream.of(posts.split(","), challenges.split(","))
         .flatMap(Arrays::stream)
         .collect(Collectors.toList());
     return collect;
+  }
+
+  @GetMapping("health-check/rabbit")
+  String rabbitProperties() {
+    return rabbitUserName + " " + rabbitPassword;
   }
 
 }
