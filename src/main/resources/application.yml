@@ -1,0 +1,11 @@
+---
+server:
+  port: 8089
+spring:
+  application:
+    name: rowing
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
